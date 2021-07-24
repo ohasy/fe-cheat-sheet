@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="chess"></div>
+  </body>
+  <script>
+    function createChessBoard(size) {
+      const chess = document.getElementById("chess");
+      chess.style.border = "1px solid black";
+
+      chess.style.height = size + "px";
+      chess.style.width = size + "px";
+      const blockSize = size / 8 + "px";
+
+      for (let i = 1; i <= 8; i++) {
+        const chessRow = document.createElement("div");
+        chessRow.classList.add("chess-row", `chess-row-${i}`);
+        chessRow.style.display = "flex";
+        for (let j = 1; j <= 8; j++) {
+          const chessBlock = document.createElement("div");
+          chessBlock.style.width = blockSize;
+          chessBlock.style.height = blockSize;
+          chessBlock.style.background =
+            i % 2 === j % 2
+              ? "linear-gradient(to bottom right, black, gray)"
+              : "linear-gradient(to bottom right, gray, white)";
+          chessRow.appendChild(chessBlock);
+        }
+        chess.appendChild(chessRow);
+      }
+    }
+
+    createChessBoard(800);
+  </script>
+</html>

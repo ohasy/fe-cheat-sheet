@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let db = null;
+      window.onload = function () {
+        const req = window.indexedDB.open("mydb", 1);
+
+        req.onsuccess = () => {
+          db = req.result;
+          console.log("db loaded sucessfully");
+        };
+
+        req.onerror = (e) => {
+          console.log("som error occured", e);
+        };
+
+        req.onupgradeneeded = (e) => {
+          let db = e.target.result;
+
+          let objectStore = db.createObjectStore("userdata_os", {
+            keyPath: "id",
+            autoIncrement: true,
+          });
+
+          objectStore.createIndex("fname", "fname", { unique: false });
+          objectStore.createIndex("lname", "lname", { unique: false });
+        };
+      };
+
+      function addData() {
+        let newItem = { fname: "Yash", lname: "ojha" };
+
+        let transaction = db.transaction(["userdata_os"], "readwrite");
+
+        let objectStore = transaction.objectStore("userdata_os");
+
+        let req = objectStore.add(newItem);
+
+        req.onsuccess = () => {
+          // some logic
+          var res = objectStore.get("id");
+          res.onsuccess = (e) => e.result.value;
+        };
+
+        transaction.oncomplete = function () {
+          console.log("completed");
+        };
+      }
+      // short
+
+      let db = null;
+      let req = indexedDB.open("db", 1);
+      req.onsuccess = function () {
+        db = req.result;
+      };
+      req.onupgradeneeded = function (e) {
+        let db = e.target.result;
+
+        let todoOS = db.createObjectStore("todo_os", {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+
+        todoOS.createIndex("name", "name"), { unique: false };
+        todoOS.createIndex("age", "age"), { unique: false };
+      };
+
+      function AddData() {
+        let tr = db.transaction(["todo_os"], "readwrite");
+        let os = tr.objectStore("todo_os");
+        let req = os.add({ name: "arfa", age: 23 });
+        req.onsuccess = () => {
+            
+        }
+      }
+    </script>
+  </body>
+</html>

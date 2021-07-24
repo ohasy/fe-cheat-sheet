@@ -1,0 +1,32 @@
+.title,
+.subtitle {
+  color: blue;
+}
+
+/* @media screen and (max-width: 600px) {
+  .title,
+  .subtitle {
+    color: red;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .title,
+  .subtitle {
+    color: green;
+  }
+} */
+/* and */
+@media (max-width: 600px) and (orientation: landscape) {
+  .title,
+  .subtitle {
+    color: green;
+  }
+}
+/* or */
+@media (max-width: 600px), (orientation: landscape) {
+  .title,
+  .subtitle {
+    color: green;
+  }
+}

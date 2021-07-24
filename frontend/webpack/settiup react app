@@ -1,0 +1,41 @@
+yarn add react react-dom
+
+yarn add -D webpack webpack-cli webpack-dev-server 
+
+yarn add -D html-webpack-plugin copy-webpack-plugin
+
+
+start: "webpack serve --config webpack.config.js --env env=dev --progress --open"
+//webpack.config.js
+
+entry : path.resolve(__dirname, "..", "src/index.tsx" )
+resolve: {
+    extensions: ["js","ts","tsx"]
+}
+module: {
+    rules: [
+        {
+            test:/\.(ts|js)x?$/,
+            use: [
+                {
+                    loader: 'babel-loader'
+                }
+            ]
+        },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            }
+    ]
+}
+plugins:[
+    new HTMLWebpackPlugin({
+        template: path.resolve(__dirname, "..", "/src/index.html")
+    })
+]
+output: {
+
+}
+
+
+

@@ -1,0 +1,26 @@
+const {fireEvent, screen, render } from "react-testing-library";
+
+await screen.findByText('Clicked once')
+fireEvent.click(button)
+
+expect().toHaveBeenCalledTimes;
+expect().toHaveFormValues
+
+
+  render(<Welcome firstName="John" lastName="Doe" />)
+  expect(screen.getByRole('form')).toHaveFormValues({
+    firstName: 'John',
+    lastName: 'Doe',
+  })
+
+  toBeChecked()
+
+     expect(screen.getByLabelText("Name")).toHaveValue("hello");
+
+     userEvent.type(screen.getByLabelText("Name"), "hello")
+
+
+      expect(input.files[0]).toStrictEqual(file)
+  expect(input.files.item(0)).toStrictEqual(file)
+  expect(input.files).toHaveLength(1)
+

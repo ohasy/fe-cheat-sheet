@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+/* .grid-container {
+  display: grid;
+  grid-template-columns: 250px 200px;
+} */
+
+/* .grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+} */
+
+.grid-container {
+  display: grid;
+  /* Template of columns 1st 2nd 3rd ... */
+  /* grid-template-columns: 200px 250px; */
+
+  /* To repeat same for multiple columns */
+  /* grid-template-columns: repeat(4, 250px); */
+  grid-template-columns: repeat(2, auto);
+
+  /* Template of rows 1st 2nd 3rd ... */
+  /* grid-template-rows: 200px 150px; */
+
+  /* default height of all rows will not grow if content exceeds */
+  /* grid-auto-rows: 150px; */
+
+  /* to have row size as minimum and maximum*/
+  grid-auto-rows: minmax(150px, auto);
+
+  /* Gaps */
+  /* row-gap: 20px; */
+  /* column-gap: 10px; */
+  /* gap: 20px 10px; */
+  gap: 20px;
+
+  /* areas */
+  /* grid-template-areas:
+    "header header"
+    "sidebar content"
+    "sidebar content"; */
+
+  /* justify-content: start; */
+  /* justify-content: space-around; */
+  /* align-content: stretch; */
+  /* justify-items: stretch; */
+  /* align-items: stretch; */
+  height: 100vh;
+}
+
+.grid-item-1 {
+  align-self: start;
+  justify-self: center;
+}
+
+/* .grid-item-1 {
+  grid-area: header;
+}
+
+.grid-item-2 {
+  grid-area: sidebar;
+}
+
+.grid-item-3 {
+  grid-area: content;
+} */
+
+/* areas end */
+
+/* .grid-item-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-column: 1 / 3;
+  grid-column: span 2;
+}
+
+.grid-item-2 {
+  grid-row: span 2;
+}
+.grid-item-3 {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-row: span 3;
+} */
